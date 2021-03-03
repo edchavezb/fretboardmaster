@@ -20,6 +20,10 @@ body {
     font-weight: bold;
 }
 
+#metronome-view {
+    background-color: rgb(24, 116, 255);
+}
+
 #settings {
     height: 20vh;
     background-color: rgb(145, 238, 207);
