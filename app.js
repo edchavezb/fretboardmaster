@@ -10,7 +10,6 @@ const noteDiv = document.getElementById("note-name")
 const startBtn = document.getElementById("start")
 const sharpCheck = document.getElementById("check-sharps")
 const flatCheck = document.getElementById("check-flats")
-const bpm = document.getElementById("set-bpm").value
 const first = document.getElementById("first-beat")
 const second = document.getElementById("second-beat")
 const third = document.getElementById("third-beat")
@@ -67,6 +66,7 @@ function metronomeBeat(beat){
 
 startBtn.addEventListener('click', () => {
     if (!countOn) {
+        const bpm = document.getElementById("set-bpm").value
         countOn = true
         startBtn.innerHTML = "Stop"
         let noteSet = sharpCheck.checked ? naturals.concat(sharps) : naturals;
