@@ -2,6 +2,9 @@ const naturals = ["A", "B", "C", "D", "E", "F", "G"]
 const sharps = ["A\u266F", "C\u266F", "D\u266F", "F\u266F", "G\u266F"]
 const flats = ["A\u266D", "B\u266D", "D\u266D", "E\u266D", "G\u266D"]
 
+const firstClick = new Audio('sounds/start.mp3')
+const beatClick = new Audio('sounds/ticker.mp3')
+
 const stringDiv = document.getElementById("string-number")
 const noteDiv = document.getElementById("note-name")
 const startBtn = document.getElementById("start")
@@ -37,21 +40,25 @@ function metronomeBeat(beat){
         case 1: 
             allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed"));
             first.classList.add("first-elapsed")
+            firstClick.play()
             beatCount++
             break;
         case 2: 
             first.classList.remove("first-elapsed")
             second.classList.add("beat-elapsed")
+            beatClick.play()
             beatCount++
             break;
         case 3: 
             allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed"));
             third.classList.add("beat-elapsed")
+            beatClick.play()
             beatCount++
             break;
         case 4:
             allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed")); 
             fourth.classList.add("beat-elapsed")
+            beatClick.play()
             beatCount = 1
             break;
     }
