@@ -33,10 +33,12 @@ function stringNote(noteArray) {
 }
 
 function metronomeBeat(beat){
-    console.log("It's counting")
     let allBeats = document.querySelectorAll(".beat")
+    let noteSet = sharpCheck.checked ? naturals.concat(sharps) : naturals;
+    noteSet = flatCheck.checked ? noteSet.concat(flats) : noteSet;
     switch (beat) {
         case 1: 
+            stringNote(noteSet)
             allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed"));
             first.classList.add("first-elapsed")
             firstClick.play()
@@ -69,16 +71,12 @@ startBtn.addEventListener('click', () => {
         const bpm = document.getElementById("set-bpm").value
         countOn = true
         startBtn.innerHTML = "Stop"
-        let noteSet = sharpCheck.checked ? naturals.concat(sharps) : naturals;
-        noteSet = flatCheck.checked ? noteSet.concat(flats) : noteSet;
-        noteChange = setInterval(() => stringNote(noteSet), 60000 / bpm * 4)
-        metronome = setInterval(() => metronomeBeat(beatCount), 60000 / bpm)
         metronomeBeat(beatCount)
+        metronome = setInterval(() => metronomeBeat(beatCount), 60000 / bpm)
     } else {
         console.log("Please stop")
         countOn = false
         startBtn.innerHTML = "Start"
-        clearInterval(noteChange);
         clearInterval(metronome);
     }
 })
