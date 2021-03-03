@@ -22,6 +22,26 @@ body {
 
 #metronome-view {
     background-color: rgb(24, 116, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.beat {
+    display: inline-block;
+    margin: 0px 15px;
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    background-color: rgb(236, 236, 236);
+}
+
+.first-elapsed {
+    background-color: rgb(50, 255, 43);
+}
+
+.beat-elapsed {
+    background-color: rgb(52, 253, 186);
 }
 
 #settings {

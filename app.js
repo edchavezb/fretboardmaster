@@ -8,8 +8,14 @@ const startBtn = document.getElementById("start")
 const sharpCheck = document.getElementById("check-sharps")
 const flatCheck = document.getElementById("check-flats")
 const bpm = document.getElementById("set-bpm").value
+const first = document.getElementById("first-beat")
+const second = document.getElementById("second-beat")
+const third = document.getElementById("third-beat")
+const fourth = document.getElementById("fourth-beat")
 
+let noteChange = null
 let metronome = null
+let beatCount = 1
 let countOn = false
 
 function myRandom(max, min) {
@@ -24,17 +30,48 @@ function stringNote(noteArray) {
     noteDiv.innerText = note
 }
 
+function metronomeBeat(beat){
+    console.log("It's counting")
+    let allBeats = document.querySelectorAll(".beat")
+    switch (beat) {
+        case 1: 
+            allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed"));
+            first.classList.add("first-elapsed")
+            beatCount++
+            break;
+        case 2: 
+            first.classList.remove("first-elapsed")
+            second.classList.add("beat-elapsed")
+            beatCount++
+            break;
+        case 3: 
+            allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed"));
+            third.classList.add("beat-elapsed")
+            beatCount++
+            break;
+        case 4:
+            allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed")); 
+            fourth.classList.add("beat-elapsed")
+            beatCount = 1
+            break;
+    }
+    
+}
+
 startBtn.addEventListener('click', () => {
     if (!countOn) {
         countOn = true
         startBtn.innerHTML = "Stop"
         let noteSet = sharpCheck.checked ? naturals.concat(sharps) : naturals;
         noteSet = flatCheck.checked ? noteSet.concat(flats) : noteSet;
-        metronome = setInterval(() => stringNote(noteSet), 60000 / bpm * 4)
+        noteChange = setInterval(() => stringNote(noteSet), 60000 / bpm * 4)
+        metronome = setInterval(() => metronomeBeat(beatCount), 60000 / bpm)
+        metronomeBeat(beatCount)
     } else {
         console.log("Please stop")
         countOn = false
         startBtn.innerHTML = "Start"
+        clearInterval(noteChange);
         clearInterval(metronome);
     }
 })
