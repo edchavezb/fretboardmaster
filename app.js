@@ -15,6 +15,9 @@ const second = document.getElementById("second-beat")
 const third = document.getElementById("third-beat")
 const fourth = document.getElementById("fourth-beat")
 
+let string = null
+let note = null
+let noteSound = null
 let noteChange = null
 let metronome = null
 let beatCount = 1
@@ -25,23 +28,44 @@ function myRandom(max, min) {
 }
 
 function stringNote(noteArray) {
-    let string = myRandom(6, 1)
-    let note = noteArray[myRandom(noteArray.length, 0)]
+    string = myRandom(6, 1)
+    note = noteArray[myRandom(noteArray.length, 0)]
     console.log(string + ", " + note)
     stringDiv.innerText = string
     noteDiv.innerText = note
+    return [string, note]
+}
+
+function soundSelector(string, note) {
+    const actualString = 7 - string
+    const standardTuning = ['E', 'A', 'D', 'G', 'B', 'E']
+    const allTones = note.includes('\u266D') ? naturals.concat(flats).sort() : naturals.concat(sharps).sort()
+    let openString = standardTuning[actualString - 1]
+    let offset = actualString == 6 ? (actualString - 1) * 5 - 1 : (actualString - 1) * 5
+    let startingPoint = allTones.indexOf(openString) + 1
+    console.log(allTones)
+    console.log(startingPoint)
+    let chromaticCount = 1
+    for(let i = startingPoint; i <= allTones.length; i++){
+        if (note == allTones[i]) break
+        chromaticCount++
+        if (i == allTones.length) i = 0
+    }
+    return chromaticCount + offset + 1
 }
 
 function metronomeBeat(beat){
     let allBeats = document.querySelectorAll(".beat")
     let noteSet = sharpCheck.checked ? naturals.concat(sharps) : naturals;
     noteSet = flatCheck.checked ? noteSet.concat(flats) : noteSet;
+    allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed"));
     switch (beat) {
         case 1: 
+            if (!noteSound) firstClick.play()
+            else noteSound.play()
             stringNote(noteSet)
-            allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed"));
+            noteSound = new Audio(`sounds/guitar-sounds/${soundSelector(string, note)}.mp3`)
             first.classList.add("first-elapsed")
-            firstClick.play()
             beatCount++
             break;
         case 2: 
@@ -51,13 +75,11 @@ function metronomeBeat(beat){
             beatCount++
             break;
         case 3: 
-            allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed"));
             third.classList.add("beat-elapsed")
             beatClick.play()
             beatCount++
             break;
         case 4:
-            allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed")); 
             fourth.classList.add("beat-elapsed")
             beatClick.play()
             beatCount = 1
@@ -80,5 +102,3 @@ startBtn.addEventListener('click', () => {
         clearInterval(metronome);
     }
 })
-
-stringNote(naturals);
