@@ -1,6 +1,6 @@
 const naturals = ["A", "B", "C", "D", "E", "F", "G"]
 const sharps = ["A\u266F", "C\u266F", "D\u266F", "F\u266F", "G\u266F"]
-const flats = ["A\u266D", "B\u266D", "D\u266D", "E\u266D", "G\u266D"]
+const natsAndflats = ["A\u266D", "A", "B\u266D", "B", "C", "D\u266D", "D", "E\u266D", "E", "F", "G\u266D", "G"]
 
 const firstClick = new Audio('sounds/start.mp3')
 const beatClick = new Audio('sounds/ticker.mp3')
@@ -31,27 +31,29 @@ function myRandom(max, min) {
 function stringNote(noteArray) {
     string = myRandom(6, 1)
     note = noteArray[myRandom(noteArray.length, 0)]
-    console.log(string + ", " + note)
     stringDiv.innerText = string
     noteDiv.innerText = note
-    return [string, note]
 }
 
 function soundSelector(string, note) {
     const actualString = 7 - string
     const standardTuning = ['E', 'A', 'D', 'G', 'B', 'E']
-    const allTones = note.includes('\u266D') ? naturals.concat(flats).sort() : naturals.concat(sharps).sort()
+    const allTones = note.includes('\u266D') ? natsAndflats : naturals.concat(sharps).sort()
+    console.log(allTones)
     let openString = standardTuning[actualString - 1]
     let notesBefore = actualString == 6 || actualString == 5 ? (actualString - 1) * 5 - 1 : (actualString - 1) * 5
     let startingPoint = allTones.indexOf(openString) + fretOffset
-    let fretDistance = allTones.indexOf(note) >= startingPoint ? allTones.indexOf(note) - startingPoint : 12 - (startingPoint - allTones.indexOf(note))
+    let fretDistance = allTones.indexOf(note) >= startingPoint ? 
+            allTones.indexOf(note) - startingPoint 
+            : 12 - (startingPoint - allTones.indexOf(note))
     return  notesBefore + fretOffset + fretDistance + 1
 }
 
 function metronomeBeat(beat){
+    let noteSet = flatCheck.checked ? natsAndflats : naturals;
+    noteSet = sharpCheck.checked ? noteSet.concat(sharps) : noteSet;
+    console.log(noteSet)
     let allBeats = document.querySelectorAll(".beat")
-    let noteSet = sharpCheck.checked ? naturals.concat(sharps) : naturals;
-    noteSet = flatCheck.checked ? noteSet.concat(flats) : noteSet;
     allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed"));
     switch (beat) {
         case 1:
@@ -79,7 +81,6 @@ function metronomeBeat(beat){
             beatCount = 1
             break;
     }
-    
 }
 
 startBtn.addEventListener('click', () => {
