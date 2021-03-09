@@ -51,11 +51,6 @@ function soundSelector(string, note) {
     return  notesBefore + fretOffset + fretDistance + 1
 }
 
-function stringSelector() {
-    const stringBoxes = [...document.querySelectorAll(".string-check:checked")].map(e => 5 - e.value)
-    selectedStrings = selectedStrings.filter((e, index) => stringBoxes.includes(index));
-}
-
 function metronomeBeat(beat){
     let noteSet = flatCheck.checked ? natsAndflats : naturals;
     noteSet = sharpCheck.checked ? noteSet.concat(sharps) : noteSet;
@@ -91,7 +86,6 @@ function metronomeBeat(beat){
 startBtn.addEventListener('click', () => {
     if (!countOn) {
         selectedStrings = [...document.querySelectorAll(".string-check:checked")].map(e => e.value)
-        //selectedStrings = guitarStrings.filter((e, index) => stringBoxes.includes(index))
         bpm = document.getElementById("set-bpm").value
         fretOffset = parseInt(document.getElementById("offset").value)
         countOn = true
