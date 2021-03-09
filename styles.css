@@ -59,6 +59,11 @@ body {
     padding: 0px 80px;
 }
 
-.input {
+.settings-panel {
+    display: inline-block;
+    width: 50%
+}
+
+#strings-text, .input {
     margin-left: 20px
 }

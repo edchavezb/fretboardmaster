@@ -39,7 +39,6 @@ function soundSelector(string, note) {
     const actualString = 7 - string
     const standardTuning = ['E', 'A', 'D', 'G', 'B', 'E']
     const allTones = note.includes('\u266D') ? natsAndflats : naturals.concat(sharps).sort()
-    console.log(allTones)
     let openString = standardTuning[actualString - 1]
     let notesBefore = actualString == 6 || actualString == 5 ? (actualString - 1) * 5 - 1 : (actualString - 1) * 5
     let startingPoint = allTones.indexOf(openString) + fretOffset
@@ -52,7 +51,6 @@ function soundSelector(string, note) {
 function metronomeBeat(beat){
     let noteSet = flatCheck.checked ? natsAndflats : naturals;
     noteSet = sharpCheck.checked ? noteSet.concat(sharps) : noteSet;
-    console.log(noteSet)
     let allBeats = document.querySelectorAll(".beat")
     allBeats.forEach(oneBeat => oneBeat.classList.remove("beat-elapsed"));
     switch (beat) {
@@ -92,7 +90,6 @@ startBtn.addEventListener('click', () => {
         metronomeBeat(beatCount)
         metronome = setInterval(() => metronomeBeat(beatCount), 60000 / bpm)
     } else {
-        console.log("Please stop")
         countOn = false
         startBtn.innerHTML = "Start"
         clearInterval(metronome);
