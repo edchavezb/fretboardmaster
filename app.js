@@ -93,6 +93,7 @@ startBtn.addEventListener('click', () => {
 
         metronomeBeat(beatCount)
         metronome = setInterval(() => metronomeBeat(beatCount), 60000 / bpm)
+        
     } else {
         countOn = false
         startBtn.innerHTML = "Start"

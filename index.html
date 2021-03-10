@@ -10,14 +10,14 @@
 </head>
 <body>
     <div id="main-ui">
-        <div id="note-view">
+        <div class="ui-panel" id="note-view">
             <div id="data">
                 <div id="string"> String: <span id="string-number"> 1 </span></div>
                 <div id="note"> Note: <span id="note-name"> A </span></div>
                 <button class="btn btn-primary btn-lg" id="start" type="button">Start</button>
             </div>
         </div>
-        <div id="metronome-view">
+        <div class="ui-panel" id="metronome-view">
             <div class="beat" id="first-beat"> </div>
             <div class="beat" id="second-beat"> </div>
             <div class="beat" id="third-beat"> </div>
@@ -27,29 +27,36 @@
     <div id="settings">
         <div id="settings-text"> Settings: </div>
         <form id="settings-form">
-            <div class="settings-panel">
-                <input type="number" class="input" id="set-bpm" name="bpm" value="60" min="40" max="150">
-                <label for="bpm"> BPM </label>
-                <input type="number" class="input" id="offset" name="offset" value="1" min="0" max="9">
-                <label for="offset"> Starting Fret </label>
-                <input type="checkbox" class="input" id="check-sharps" name="sharps" value="Sharps">
-                <label for="sharps"> Sharps </label>
-                <input type="checkbox" class="input" id="check-flats" name="flats" value="Flats">
-                <label for="flats"> Flats </label>
-            </div><div class="settings-panel">
+            <div class="settings-panel" id="settings-left">
+                <div class="settings-div" id="bpm-fret">
+                    <input type="number" class="input" id="set-bpm" name="bpm" value="60" min="40" max="150">
+                    <label for="bpm"> BPM </label>
+                    <input type="number" class="input" id="offset" name="offset" value="1" min="0" max="9">
+                    <label for="offset"> Starting Fret </label>
+                </div>
+                <div class="settings-div" id="sharps-flats">
+                    <input type="checkbox" class="input" id="check-sharps" name="sharps" value="Sharps">
+                    <label for="sharps"> Sharps </label>
+                    <input type="checkbox" class="input" id="check-flats" name="flats" value="Flats">
+                    <label for="flats"> Flats </label>
+                </div>
+               
+            </div><div class="settings-panel" id="settings-right">
                 <span id="strings-text"> Strings to practice </span>
-                <input type="checkbox" class="string-check input" id="sixth-string" name="sixth-string" value="6" checked>
-                <label for="sixth-string"> 6 </label>
-                <input type="checkbox" class="string-check input" id="fifth-string" name="fifth-string" value="5" checked>
-                <label for="fifth-string"> 5 </label>
-                <input type="checkbox" class="string-check input" id="fourth-string" name="fourth-string" value="4" checked>
-                <label for="fourth-string"> 4 </label>
-                <input type="checkbox" class="string-check input" id="third-string" name="third-string" value="3" checked>
-                <label for="third-string"> 3 </label>
-                <input type="checkbox" class="string-check input" id="second-string" name="second-string" value="2" checked>
-                <label for="second-string"> 2 </label>
-                <input type="checkbox" class="string-check input" id="first-string" name="first-string" value="1" checked>
-                <label for="first-string"> 1 </label>
+                <div class="settings-div" id="strings-boxes">
+                    <input type="checkbox" class="string-check input" id="sixth-string" name="sixth-string" value="6" checked>
+                    <label for="sixth-string"> 6 </label>
+                    <input type="checkbox" class="string-check input" id="fifth-string" name="fifth-string" value="5" checked>
+                    <label for="fifth-string"> 5 </label>
+                    <input type="checkbox" class="string-check input" id="fourth-string" name="fourth-string" value="4" checked>
+                    <label for="fourth-string"> 4 </label>
+                    <input type="checkbox" class="string-check input" id="third-string" name="third-string" value="3" checked>
+                    <label for="third-string"> 3 </label>
+                    <input type="checkbox" class="string-check input" id="second-string" name="second-string" value="2" checked>
+                    <label for="second-string"> 2 </label>
+                    <input type="checkbox" class="string-check input" id="first-string" name="first-string" value="1" checked>
+                    <label for="first-string"> 1 </label>
+                </div>
             </div>
         </form>
     </div>
