@@ -104,13 +104,11 @@ startBtn.addEventListener('click', () => {
 })
 
 toggleSettings.addEventListener('click', () => {
-    console.log("Toggle")
-    if (settingsPanel.style.display === "none") {
+    if (window.getComputedStyle(settingsPanel).getPropertyValue('display') === "none") {
         console.log("1")
         settingsPanel.style.display = "block";
         toggleSettings.innerHTML = "Collapse"
     } else {
-        console.log("2")
         settingsPanel.style.display = "none";
         toggleSettings.innerHTML = "Expand"
     }
