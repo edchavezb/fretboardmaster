@@ -15,6 +15,8 @@ const first = document.getElementById("first-beat")
 const second = document.getElementById("second-beat")
 const third = document.getElementById("third-beat")
 const fourth = document.getElementById("fourth-beat")
+const toggleSettings = document.getElementById("toggle-button")
+const settingsPanel = document.getElementById("settings-form")
 
 let bpm = null
 let fretOffset = null
@@ -93,10 +95,23 @@ startBtn.addEventListener('click', () => {
 
         metronomeBeat(beatCount)
         metronome = setInterval(() => metronomeBeat(beatCount), 60000 / bpm)
-        
+
     } else {
         countOn = false
         startBtn.innerHTML = "Start"
         clearInterval(metronome);
+    }
+})
+
+toggleSettings.addEventListener('click', () => {
+    console.log("Toggle")
+    if (settingsPanel.style.display === "none") {
+        console.log("1")
+        settingsPanel.style.display = "block";
+        toggleSettings.innerHTML = "Collapse"
+    } else {
+        console.log("2")
+        settingsPanel.style.display = "none";
+        toggleSettings.innerHTML = "Expand"
     }
 })

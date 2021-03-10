@@ -76,15 +76,15 @@ body {
     margin-left: 20px
 }
 
-#expand-settings {
-    height: 30px;
+#toggle-settings {
     width: 80%;
     margin: 0px 10%;
     display: none
 }
 
-#expand-button {
+#toggle-button {
     width: 100%;
+    margin-bottom: 20px
 }
 
 @media (max-width: 1150px) {
@@ -127,7 +127,7 @@ body {
         margin-top: 20px
     }
 
-    #expand-settings {
+    #toggle-settings {
         display: inline-block
     }
 
