@@ -76,6 +76,17 @@ body {
     margin-left: 20px
 }
 
+#expand-settings {
+    height: 30px;
+    width: 80%;
+    margin: 0px 10%;
+    display: none
+}
+
+#expand-button {
+    width: 100%;
+}
+
 @media (max-width: 1150px) {
 
     .settings-panel {
@@ -86,6 +97,10 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    #main-ui {
+        flex-flow: row wrap-reverse;
+    }
 
     .ui-panel {
         width: 100%
@@ -99,10 +114,6 @@ body {
 
 @media (max-width: 576px) {
 
-    #main-ui {
-        height: 65vh;
-    }
-
     .ui-panel {
         width: 100%
     }
@@ -112,20 +123,28 @@ body {
         margin-top: 10px
     }
 
-    #note-view {
-        font-size: 3.5em
-    }
-
     #sharps-flats {
         margin-top: 20px
     }
 
+    #expand-settings {
+        display: inline-block
+    }
+
+    #settings-form {
+        display: none
+    }
+
 }
 
-@media (max-width: 576px) {
+@media (max-width: 400px) {
 
     #strings-text, .input {
         margin-left: 10px
+    }
+
+    #settings-text {
+        padding: 15px calc(5% + 10px);
     }
 
 }
