@@ -99,7 +99,7 @@ const requestWakeLock = async () => {
   }
 };
 
-startBtn.addEventListener('click', () => {
+startBtn.addEventListener('click', async () => {
   if (!countOn) {
     selectedStrings = [...document.querySelectorAll(".string-check:checked")].map(e => e.value)
     bpm = document.getElementById("set-bpm").value
@@ -107,14 +107,14 @@ startBtn.addEventListener('click', () => {
     countOn = true
     startBtn.innerHTML = "Stop"
 
-    requestWakeLock();
+    await requestWakeLock();
     metronomeBeat(beatCount)
     metronome = setInterval(() => metronomeBeat(beatCount), 60000 / bpm)
 
   } else {
     countOn = false
     startBtn.innerHTML = "Start"
-    wakeLock.release();
+    await wakeLock.release();
     wakeLock = null;
     clearInterval(metronome);
   }
