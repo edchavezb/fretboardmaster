@@ -114,8 +114,10 @@ startBtn.addEventListener('click', async () => {
   } else {
     countOn = false
     startBtn.innerHTML = "Start"
-    await wakeLock.release();
-    wakeLock = null;
+    if (wakeLock) {
+      wakeLock.release();
+      wakeLock = null;
+    }
     clearInterval(metronome);
   }
 })
