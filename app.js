@@ -123,12 +123,12 @@ startBtn.addEventListener('click', async () => {
 })
 
 toggleSettings.addEventListener('click', () => {
-  if (window.getComputedStyle(settingsPanel).getPropertyValue('display') === "none") {
+  if (window.getComputedStyle(settingsPanel).getPropertyValue('max-height') == "0px") {
     console.log("1")
-    settingsPanel.style.display = "block";
+    settingsPanel.style.maxHeight = "200px";
     toggleSettings.innerHTML = "Collapse"
   } else {
-    settingsPanel.style.display = "none";
+    settingsPanel.style.maxHeight = "0px";
     toggleSettings.innerHTML = "Expand"
   }
 })

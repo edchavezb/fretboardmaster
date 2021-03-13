@@ -61,6 +61,7 @@ body {
 
 #settings-form {
     padding: 0px 5%;
+    transition: all .25s cubic-bezier(.02,.01,.47,1);
 }
 
 .settings-panel {
@@ -79,7 +80,7 @@ body {
 #toggle-settings {
     width: 80%;
     margin: 0px 10%;
-    display: none
+    display: none;
 }
 
 #toggle-button {
@@ -132,7 +133,8 @@ body {
     }
 
     #settings-form {
-        display: none
+        overflow: hidden;  /* Hide the element content, while height = 0 */
+        max-height: 0px;
     }
 
 }
