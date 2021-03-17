@@ -140,7 +140,7 @@ toggleSettings.addEventListener('click', () => {
 })
 
 extBrowserBtn.addEventListener('click', () => {
-  window.open("googlechrome://navigate?url=edchavezb.github.io/fretboardmaster", "_system");
+  navigator.clipboard.writeText("https://edchavezb.github.io/fretboardmaster");
 })
 
 if(navigator.userAgent.includes("Instagram")){
