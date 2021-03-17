@@ -145,6 +145,7 @@ toggleSettings.addEventListener('click', () => {
 
 extBrowserBtn.addEventListener('click', () => {
   copyToClipboard("https://edchavezb.github.io/fretboardmaster");
+  extBrowserBtn.innerHTML = "Copied!"
 })
 
 if(navigator.userAgent.includes("Instagram")){
