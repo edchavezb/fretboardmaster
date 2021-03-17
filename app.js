@@ -139,10 +139,10 @@ toggleSettings.addEventListener('click', () => {
   }
 })
 
-extBrowserBtn.addEventListener('click', () => {
+/* extBrowserBtn.addEventListener('click', () => {
   window.open('https://edchavezb.github.io/fretboardmaster');
-})
+}) */
 
 if(navigator.userAgent.includes("Instagram")){
   document.getElementById("webview-modal").style.display = "Flex"
-}
+} 
