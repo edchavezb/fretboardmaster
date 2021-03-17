@@ -100,9 +100,14 @@ const requestWakeLock = async () => {
   }
 };
 
-const displayWebViewModal = () => {
-  
-
+function copyToClipboard(text) {
+  var input = document.createElement('input');
+  input.setAttribute('value', text);
+  document.body.appendChild(input);
+  input.select();
+  var result = document.execCommand('copy');
+  document.body.removeChild(input);
+  return result;
 }
 
 startBtn.addEventListener('click', async () => {
@@ -130,7 +135,6 @@ startBtn.addEventListener('click', async () => {
 
 toggleSettings.addEventListener('click', () => {
   if (window.getComputedStyle(settingsPanel).getPropertyValue('max-height') == "0px") {
-    console.log("1")
     settingsPanel.style.maxHeight = "200px";
     toggleSettings.innerHTML = "Collapse"
   } else {
@@ -140,7 +144,7 @@ toggleSettings.addEventListener('click', () => {
 })
 
 extBrowserBtn.addEventListener('click', () => {
-  navigator.clipboard.writeText("https://edchavezb.github.io/fretboardmaster");
+  copyToClipboard("https://edchavezb.github.io/fretboardmaster");
 })
 
 if(navigator.userAgent.includes("Instagram")){
