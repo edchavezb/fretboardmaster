@@ -17,6 +17,7 @@ const third = document.getElementById("third-beat")
 const fourth = document.getElementById("fourth-beat")
 const toggleSettings = document.getElementById("toggle-button")
 const settingsPanel = document.getElementById("settings-form")
+const extBrowserBtn = document.getElementById("external-button")
 
 let bpm = null
 let fretOffset = null
@@ -99,6 +100,11 @@ const requestWakeLock = async () => {
   }
 };
 
+const displayWebViewModal = () => {
+  
+
+}
+
 startBtn.addEventListener('click', async () => {
   if (!countOn) {
     selectedStrings = [...document.querySelectorAll(".string-check:checked")].map(e => e.value)
@@ -132,3 +138,11 @@ toggleSettings.addEventListener('click', () => {
     toggleSettings.innerHTML = "Expand"
   }
 })
+
+extBrowserBtn.addEventListener('click', () => {
+  window.open('https://edchavezb.github.io/fretboardmaster');
+})
+
+if(navigator.userAgent.includes("Instagram")){
+  document.getElementById("webview-modal").style.display = "Flex"
+}
