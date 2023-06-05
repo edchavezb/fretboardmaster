@@ -1,2 +1,3 @@
 # fretboardmaster
-An app to help guitarists map the notes on the fretboard
+An app to help guitarists learn and practice the notes on the fretboard
+Demo available at [here](https://edchavezb.github.io/fretboardmaster/).
